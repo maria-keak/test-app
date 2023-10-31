@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route,  Routes, Navigate } from 'react-router-
 import store from './app/store';
 import ToDos from './routes/ToDos/Todos';
 import AddToDo from './routes/AddToDo/AddToDo';
-import ReviewToDo from './routes/PreviewToDo/PreviewToDo';
+import PreviewToDo from './routes/PreviewToDo/PreviewToDo';
 import './index.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,7 +16,7 @@ root.render(
       <Router>
         <Routes>
           <Route path="/todos" element={<ToDos />} />
-          <Route path="/todo/:id" element={ <ReviewToDo/>} />
+          <Route path="/todo/:id" element={ <PreviewToDo/>} />
           <Route path="/todo/create" element={<AddToDo />} /> 
           <Route path="*" element={<Navigate to="/todos" />} />
         </Routes>

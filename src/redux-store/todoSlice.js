@@ -8,12 +8,12 @@ const initialList = [
     {
         id: "9ef6e570-7025-47a9-a048-198232681a09",
         description: "Testing 1",
-        dane: false
+        done: false
     },
     {
         id: "9ef6e570-7025-47a9-a048-198232681a10",
         description: "Testing 2",
-        dane: false
+        done: false
     }
 
 ]
@@ -36,6 +36,8 @@ const todoSlice = createSlice({
         deleteTodo: (state, action) => {
             return state.filter(todo => todo.id !== action.payload);
         },
+
+       
     },
 });
 

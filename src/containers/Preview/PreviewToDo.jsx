@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -8,18 +8,30 @@ import { toggleTodoThunk } from '../../redux-store/thunks/mark';
 import { deleteItemThunk } from '../../redux-store/thunks/deleteItem';
 import { fetchListsData } from '../../redux-store/thunks/lists';
 import { Desc, StatusText, StyledButton, TodoIdText } from './style';
+import { previewDataThunk } from '../../redux-store/thunks/preview';
 // import './style.css'
 
 
 const PreviewToDo = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
-    // dispatch(fetchListsData()) ///???
     const { id } = useParams();
-    const todo = useSelector((state) => state.todo.todos.find((t) => t.id == id));
 
-    const handleToggleTodo = useCallback(() => {
-        dispatch(toggleTodoThunk({ ...todo, done: !todo.done }));
+    const [todo, setTodo] = useState(null);
+    const [todoStatus, setodoStatus] = useState(false);
+
+    useEffect(() => {
+        dispatch(previewDataThunk({ id, successCallback: (finded) => {setTodo(finded); setodoStatus(finded.done) }}))
+    }, []);
+
+    const handleDelete = useCallback((todo) => {
+        dispatch(deleteItemThunk( { id: todo.id, callback: () => navigate('/todos') } ))     
+    }, [dispatch]);
+
+    const handleToggleTodo = useCallback((todo) => {
+        todo.done = !todo.done
+        setodoStatus(todo.done)
+        dispatch(toggleTodoThunk(todo));
     }, []);
 
     return (
@@ -32,14 +44,14 @@ const PreviewToDo = () => {
             content={
                 <div className='content'>
                     {todo ? <><TodoIdText>Todo ID {todo.id}</TodoIdText>
-
                         <div>
                             <Desc>{todo.description}</Desc>
-                            <StatusText isDone={todo.done}>{todo.done ? 'Done' : 'Not Done'}</StatusText>
-                            <StyledButton type={todo.done ? 'dashed' : 'primary'} onClick={handleToggleTodo}>
-                                {todo.done ? 'Mark as Undone' : 'Mark as Done'}
+                            <StatusText isDone={todoStatus}>{todoStatus ? 'Done' : 'Not Done'}</StatusText>
+                            <StyledButton type={todoStatus ? 'dashed' : 'primary'} onClick={() => handleToggleTodo(todo)}>
+                                {todoStatus? 'Mark as Undone' : 'Mark as Done'}
                             </StyledButton>
-                            <Button type="primary" danger onClick={() => { dispatch(deleteItemThunk(todo.id)).then(() => navigate('/todos')) }}> Delete </Button>
+                            <Button type="primary" danger onClick={
+                                () => { handleDelete(todo) }}> Delete </Button>
                         </div>
                     </> : (
                         <p>Todo not found</p>

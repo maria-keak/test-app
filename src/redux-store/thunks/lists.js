@@ -5,7 +5,6 @@ export const fetchListsData = createAsyncThunk(
   'lists/request',
   async () => {
     const response = await getListsData()
-    console.log(response.data);
     return response
   }
 );

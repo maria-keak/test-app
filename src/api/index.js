@@ -8,13 +8,12 @@ export const getListsData = async () => {
 
 
 export const getListItem = async (id) => {
-    let response = await getResponse(axios.get('https://jsonplaceholder.typicode.com/todos/' + id))
+    let response = await getResponse(axios.get('https://6543ad6901b5e279de20c994.mockapi.io/todo/todos/' + id))
     return response
 
 };
 export const deleteItemApi = async (id) => {
     let response = await getResponse(axios.delete('https://6543ad6901b5e279de20c994.mockapi.io/todo/todos/' + id))
-    console.log(response);
     return response
 
 };

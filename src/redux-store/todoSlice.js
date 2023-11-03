@@ -1,19 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {listsBuilder} from './builders/lists.js';
+import { listsBuilder } from './builders/lists.js';
 
 const todoSlice = createSlice({
     name: 'todos',
     initialState:
     {
-        todos: []
+        todos: [],
+        loading: false
     }
     ,
-    reducers: {
 
-
-
-    },
-    extraReducers:(builder)=>{
+    extraReducers: (builder) => {
         listsBuilder(builder)
     }
 });

@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import ToDos from "../containers/Lists/Todos";
 import PreviewToDo from "../containers/Preview/PreviewToDo";
 import CreateToDo from '../containers/Create/CreateToDo';
+import { MainContainer } from './style.js';
 
 function App() {
 
     return (
-        <div className="main-container">
+       <MainContainer>
             <Router>
                 <Routes>
                     <Route path="/todos" element={<ToDos />} />
@@ -16,7 +17,7 @@ function App() {
                     <Route path="*" element={<Navigate to="/todos" />} />
                 </Routes>
             </Router>
-        </div>
+        </MainContainer>
     )
 }
 

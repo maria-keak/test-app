@@ -1,13 +1,14 @@
 import React from 'react';
-import { Card } from 'antd';
 import { Link } from 'react-router-dom';
-import './style.css'
+import { useSelector } from 'react-redux';
+import { StyledCard } from './style.js';
+import { Card } from 'antd';
 
-const CardComponent = ({ content, contentTitle, linkTo, linkText, linkIcon, footerContent }) => {
 
-
+const CardComponent = ({ content, contentTitle, linkTo, linkText, linkIcon, footerContent}) => {
+ 
     return (
-        <Card 
+        <StyledCard style={{ width: 700, marginTop: 16 }}
             className='card'
             title={contentTitle}
             extra={
@@ -16,13 +17,13 @@ const CardComponent = ({ content, contentTitle, linkTo, linkText, linkIcon, foot
                     {linkIcon}
                 </Link>}>
                     
-            {content}
+           {content}
 
             {footerContent != null ?
                 <Card.Grid hoverable={false} style={{ width: '100%' }}>
                     {footerContent} todos left
                 </Card.Grid> : null}
-        </Card>
+        </StyledCard>
 
     );
 };

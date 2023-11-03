@@ -2,8 +2,9 @@ import { Form, Input, Button } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../../redux-store/todoSlice';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { createThunk } from '../../redux-store/thunks/create';
+import { validator } from '../../helpers/formHelper';
 
 const FormComponent = () => {
 
@@ -11,17 +12,17 @@ const FormComponent = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const onFinish = (values) => {
-        dispatch(addTodo({ ...values, done: false }))
-        navigate('/todos');
-    };
+    const onFinish = useCallback((values) => {
+        dispatch(createThunk({ ...values, done: false }))
+        .then(() => navigate('/todos'));
+    }, [dispatch, navigate]);
 
 
 
-    const handleFormChange = (_, allFields) => {
+    const handleFormChange = useCallback((_, allFields) => {
         const formIsValid = allFields.every((field) => field.name[0] !== 'description' || (field.value && field.value.trim()));
         setIsFormValid(formIsValid);
-    };
+    }, [setIsFormValid]);
 
     return (
         <Form
@@ -33,10 +34,7 @@ const FormComponent = () => {
                 label="Id"
                 name="id"
                 initialValue={uuidv4()}
-                rules={[{
-                    validator: (_, value) => value && value.trim() ? Promise.resolve() :
-                        Promise.reject("This field can't be empty")
-                }]}>
+                rules={[validator()]}>
 
                 <Input placeholder="Enter the Id" />
             </Form.Item>
@@ -44,10 +42,7 @@ const FormComponent = () => {
             <Form.Item
                 label="Description"
                 name="description"
-                rules={[{
-                    validator: (_, value) => value && value.trim() ? Promise.resolve() :
-                        Promise.reject("This field can't be empty")
-                }]}>
+                rules={[validator()]}>
                 <Input placeholder="Enter the description" />
             </Form.Item>
 

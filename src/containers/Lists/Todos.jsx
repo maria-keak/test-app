@@ -5,10 +5,12 @@ import { PlusSquareOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 
 const ToDos = () => {
+
     const [undoneCount, setUndoneCount] = useState(1);
+
    return <CardComponent
     content={<ListsComponent 
-        setState={setUndoneCount}
+        setUndoneCount={setUndoneCount}
         />}
     linkTo="/todo/create"
     linkText="Create New Todo"

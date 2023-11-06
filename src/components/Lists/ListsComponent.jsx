@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Checkbox, Button, Skeleton } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchListsData } from '../../redux-store/thunks/lists';
 import { deleteItemThunk } from '../../redux-store/thunks/deleteItem';
 import { toggleTodoThunk } from '../../redux-store/thunks/mark';
 import {
@@ -11,11 +10,12 @@ import {
     Actions,
     MarkedSpan
 } from './style.js'
+import { getTodos } from '../../redux-store/selectors';
 
 const ListsComponent = ({ setUndoneCount }) => {
 
     const dispatch = useDispatch();
-    const todos = useSelector(state => state.todo.todos);
+    const todos = useSelector(getTodos);
 
     const [loadingItem, setLoadingItem] = useState(false);
 
@@ -35,7 +35,6 @@ const ListsComponent = ({ setUndoneCount }) => {
     }, [dispatch]);
 
     return <Content style={{ width: '100%' }}>
-        {/* //<Skeleton.Input active size={'large'} block /> */}
         {
 
             (todos.length ? todos.map(todo => {

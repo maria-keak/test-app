@@ -1,15 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Button } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ReconciliationTwoTone } from '@ant-design/icons';
 import CardComponent from '../../components/Card/Card';
 import { toggleTodoThunk } from '../../redux-store/thunks/mark';
 import { deleteItemThunk } from '../../redux-store/thunks/deleteItem';
-import { fetchListsData } from '../../redux-store/thunks/lists';
 import { Desc, StatusText, StyledButton, TodoIdText } from './style';
 import { previewDataThunk } from '../../redux-store/thunks/preview';
-// import './style.css'
 
 
 const PreviewToDo = () => {

@@ -29,12 +29,6 @@ export function listsBuilder(builder) {
             state.loading = false
         })
 
-        .addCase(deleteItemThunk.rejected, (state, action) => {
-        })
-  
-        .addCase(toggleTodoThunk.pending, (state) => {
-        })
-
         .addCase(toggleTodoThunk.fulfilled, (state, action) => {
         
             const todo = state.todos?.find((t) => t.id === action.payload.id);
@@ -44,26 +38,6 @@ export function listsBuilder(builder) {
          
         })
 
-        .addCase(toggleTodoThunk.rejected, (state, action) => {
-        })
-        //////update
-        .addCase(createThunk.pending, (state) => {
-        })
 
-        .addCase(createThunk.fulfilled, (state, action) => {
-        })
-
-        .addCase(createThunk.rejected, (state, action) => {
-        })
-
-
-        .addCase(previewDataThunk.pending, (state) => {
-        })
-
-        .addCase(previewDataThunk.fulfilled, (state, action) => {
-        })
-
-        .addCase(previewDataThunk.rejected, (state, action) => {
-        });
 }
 

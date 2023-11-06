@@ -13,8 +13,7 @@ const FormComponent = () => {
     const navigate = useNavigate();
 
     const onFinish = useCallback((values) => {
-        dispatch(createThunk({ ...values, done: false }))
-        .then(() => navigate('/todos'));
+        dispatch(createThunk({data: { ...values, done: false }, successCallback: () => navigate('/todos')}));
     }, [dispatch, navigate]);
 
 

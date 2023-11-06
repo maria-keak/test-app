@@ -6,7 +6,7 @@ export const previewDataThunk = createAsyncThunk(
   async ({ id, successCallback }, thunkAPI) => {
     const response = await getListItem(id)
     if (response.error) {
-      return thunkAPI.requestId(id)
+      return thunkAPI.rejectWithValue(response.error)
     }
     successCallback(response.data)
     return response

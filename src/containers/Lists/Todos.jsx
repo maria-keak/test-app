@@ -5,10 +5,13 @@ import { PlusSquareOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchListsData } from '../../redux-store/thunks/lists';
+import { isLoading } from '../../redux-store/selectors';
 
 const ToDos = () => {
     const dispatch = useDispatch();
-    const isloading = useSelector(state => state.todo.loading);
+
+    const isloading = useSelector(isLoading);
+    
     useEffect(() => {
         dispatch(fetchListsData())
     }, []);

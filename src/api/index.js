@@ -1,7 +1,7 @@
 import axios from 'axios';
 import getResponse from './util/util.js';
 
-const MAIN_API = 'https://6543ad6901b5e279de20c994.mockapi.io/todo/todos/'
+const MAIN_API = 'https://6543ad6901b5e279de20c994.mockapi.io/todo/todos/' 
 
 export const getListsData = async () => {
     let response = await getResponse(axios.get(MAIN_API))

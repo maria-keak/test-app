@@ -7,7 +7,7 @@ import { toggleTodoThunk } from '../../redux-store/thunks/mark.js';
 import * as Styled from './styled/index.js'
 import { getTodos } from '../../redux-store/selectors/index.js';
 
-const ListsComponent = ({ setUndoneCount }) => {
+const ListsComponent = ({ setundoneToDosCount }) => {
 
     const dispatch = useDispatch();
     const todos = useSelector(getTodos);
@@ -15,10 +15,10 @@ const ListsComponent = ({ setUndoneCount }) => {
     const [loadingItem, setLoadingItem] = useState(false);
 
 
-    useEffect(() => {
-        const undone = todos.filter((todo) => !todo.done);
-        setUndoneCount(undone.length);
-    }, [todos]);
+    // useEffect(() => {
+    //     const undone = todos.filter((todo) => !todo.done);
+    //     setundoneToDosCount(undone.length);
+    // }, [todos]);
 
     const handleCheckboxChange = useCallback((todo) => {
         dispatch(toggleTodoThunk({ ...todo, done: !todo.done }));

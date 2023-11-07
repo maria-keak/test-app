@@ -11,24 +11,21 @@ const ToDos = () => {
     const dispatch = useDispatch();
 
     const isloading = useSelector(isLoading);
-    
+
     useEffect(() => {
         dispatch(getEntireListThunk())
     }, []);
+ 
 
-    const [undoneCount, setUndoneCount] = useState(1);
-
-   return <CardComponent
-    content={<ListsComponent 
-        setUndoneCount={setUndoneCount}
-        />}
-    linkTo="/todo/create"
-    linkText="Create New Todo"
-    linkIcon={ <PlusSquareOutlined className="link-icon" />}
-    contentTitle={"Entire List"}
-    footerContent={undoneCount}
-    loading={isloading}
-/>
+    return <CardComponent
+        content={<ListsComponent />}
+        linkTo="/todo/create"
+        linkText="Create New Todo"
+        linkIcon={<PlusSquareOutlined className="link-icon" />}
+        contentTitle={"Entire List"}
+        showFooter
+        loading={isloading}
+    />
 
 }
 export default ToDos;

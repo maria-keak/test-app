@@ -7,33 +7,24 @@ import { toggleTodoThunk } from '../../redux-store/thunks/mark.js';
 import * as Styled from './styled/index.js'
 import { getTodos } from '../../redux-store/selectors/index.js';
 
-const ListsComponent = ({ setundoneToDosCount }) => {
+const ListsComponent = () => {
 
     const dispatch = useDispatch();
     const todos = useSelector(getTodos);
-
-    const [loadingItem, setLoadingItem] = useState(false);
-
-
-    // useEffect(() => {
-    //     const undone = todos.filter((todo) => !todo.done);
-    //     setundoneToDosCount(undone.length);
-    // }, [todos]);
 
     const handleCheckboxChange = useCallback((todo) => {
         dispatch(toggleTodoThunk({ ...todo, done: !todo.done }));
     }, [dispatch]);
 
     const handleDelete = useCallback((todo) => {
-        setLoadingItem(true);
-        dispatch(deleteItemThunk({ id: todo.id, callback: () => setLoadingItem(false) }))
+        dispatch(deleteItemThunk({ id: todo.id}))
     }, [dispatch]);
 
     return <Styled.Content style={{ width: '100%' }}>
         {
 
             (todos.length ? todos.map(todo => {
-                return loadingItem ? <Skeleton.Input active size={'large'} block />  :( <Styled.Item key={todo.id + '_i'}>
+                return ( <Styled.Item key={todo.id + '_i'}>
 
                     <Checkbox checked={todo.done} onChange={() => handleCheckboxChange(todo)}>
                         <Styled.MarkedSpan marked={todo.done}>

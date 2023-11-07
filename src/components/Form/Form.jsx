@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { useCallback, useState } from 'react';
-import { createThunk } from '../../redux-store/thunks/create';
+import { createToDoThunk } from '../../redux-store/thunks/create';
 import { validator } from '../../helpers/formHelper';
 
 const FormComponent = () => {
@@ -13,7 +13,7 @@ const FormComponent = () => {
     const navigate = useNavigate();
 
     const onFinish = useCallback((values) => {
-        dispatch(createThunk({data: { ...values, done: false }, successCallback: () => navigate('/todos')}));
+        dispatch(createToDoThunk({data: { ...values, done: false }, successCallback: () => navigate('/todos')}));
     }, [dispatch, navigate]);
 
 

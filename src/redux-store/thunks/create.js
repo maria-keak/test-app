@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { postListItem } from '../../api/index.js';
 
-export const createThunk = createAsyncThunk(
-    'create/request',
+export const createToDoThunk = createAsyncThunk(
+    'createToDoThunk',
     async ({ data, successCallback }, thunkAPI) => {
         const response = await postListItem(data)
 

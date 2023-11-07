@@ -1,21 +1,19 @@
-import { createThunk } from "../thunks/create.js";
 import { deleteItemThunk } from "../thunks/deleteItem.js";
-import { fetchListsData } from "../thunks/lists.js";
+import { getEntireListThunk } from "../thunks/lists.js";
 import { toggleTodoThunk } from "../thunks/mark.js";
-import { previewDataThunk } from "../thunks/preview.js";
 
 export function listsBuilder(builder) {
     builder
-        .addCase(fetchListsData.pending, (state) => {
+        .addCase(getEntireListThunk.pending, (state) => {
             state.loading = true
         })
 
-        .addCase(fetchListsData.fulfilled, (state, action) => {
+        .addCase(getEntireListThunk.fulfilled, (state, action) => {
             state.loading = false
             state.todos = action.payload.data
         })
 
-        .addCase(fetchListsData.rejected, (state, action) => {
+        .addCase(getEntireListThunk.rejected, (state, action) => {
             state.loading = false
         })
     

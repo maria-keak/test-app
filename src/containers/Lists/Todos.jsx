@@ -4,7 +4,7 @@ import ListsComponent from '../../components/Lists/ListsComponent';
 import { PlusSquareOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchListsData } from '../../redux-store/thunks/lists';
+import { getEntireListThunk } from '../../redux-store/thunks/lists';
 import { isLoading } from '../../redux-store/selectors';
 
 const ToDos = () => {
@@ -13,7 +13,7 @@ const ToDos = () => {
     const isloading = useSelector(isLoading);
     
     useEffect(() => {
-        dispatch(fetchListsData())
+        dispatch(getEntireListThunk())
     }, []);
 
     const [undoneCount, setUndoneCount] = useState(1);

@@ -7,7 +7,7 @@ import CardComponent from '../../components/Card/Card';
 import { toggleTodoThunk } from '../../redux-store/thunks/mark';
 import { deleteItemThunk } from '../../redux-store/thunks/deleteItem';
 import { Desc, StatusText, StyledButton, TodoIdText } from './style';
-import { previewDataThunk } from '../../redux-store/thunks/preview';
+import { previewToDoThunk } from '../../redux-store/thunks/preview';
 
 
 const PreviewToDo = () => {
@@ -19,7 +19,7 @@ const PreviewToDo = () => {
     const [todoStatus, setodoStatus] = useState(false);
 
     useEffect(() => {
-        dispatch(previewDataThunk({ id, successCallback: (finded) => {setTodo(finded); setodoStatus(finded.done) }}))
+        dispatch(previewToDoThunk({ id, successCallback: (finded) => {setTodo(finded); setodoStatus(finded.done) }}))
     }, []);
 
     const handleDelete = useCallback((todo) => {

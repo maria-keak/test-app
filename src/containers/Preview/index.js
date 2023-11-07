@@ -3,11 +3,11 @@ import { Button } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ReconciliationTwoTone } from '@ant-design/icons';
-import CardComponent from '../../components/Card/Card';
-import { toggleTodoThunk } from '../../redux-store/thunks/mark';
-import { deleteItemThunk } from '../../redux-store/thunks/deleteItem';
-import { Desc, StatusText, StyledButton, TodoIdText } from './style';
-import { previewToDoThunk } from '../../redux-store/thunks/preview';
+import CardComponent from '../../components/Card/index.js';
+import { toggleTodoThunk } from '../../redux-store/thunks/mark.js';
+import { deleteItemThunk } from '../../redux-store/thunks/deleteItem.js';
+import { Desc, StatusText, StyledButton, TodoIdText } from './styled/index.js';
+import { previewToDoThunk } from '../../redux-store/thunks/preview.js';
 
 
 const PreviewToDo = () => {

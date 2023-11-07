@@ -1,6 +1,6 @@
 import { ReconciliationTwoTone } from '@ant-design/icons';
-import FormComponent from '../../components/Form/Form';
-import CardComponent from '../../components/Card/Card';
+import FormComponent from '../../components/Form/index.js';
+import CardComponent from '../../components/Card/index.js';
 
 
 function CreateToDo() {

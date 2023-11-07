@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import CardComponent from '../../components/Card/Card';
-import ListsComponent from '../../components/Lists/ListsComponent';
+import CardComponent from '../../components/Card/index.js';
+import ListsComponent from '../../components/Lists/index.js';
 import { PlusSquareOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getEntireListThunk } from '../../redux-store/thunks/lists';
-import { isLoading } from '../../redux-store/selectors';
+import { getEntireListThunk } from '../../redux-store/thunks/lists.js';
+import { isLoading } from '../../redux-store/selectors/index.js';
 
 const ToDos = () => {
     const dispatch = useDispatch();

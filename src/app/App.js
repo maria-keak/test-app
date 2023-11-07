@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
-import ToDos from "../containers/Lists/Todos";
-import PreviewToDo from "../containers/Preview/PreviewToDo";
-import CreateToDo from '../containers/Create/CreateToDo';
+import ToDos from "../containers/ToDos/index.js";
+import PreviewToDo from "../containers/Preview/index.js";
+import CreateToDo from '../containers/CreateToDo/index.js';
 import { MainContainer } from './style.js';
 
 function App() {

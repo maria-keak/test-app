@@ -2,15 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Checkbox, Button, Skeleton } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteItemThunk } from '../../redux-store/thunks/deleteItem';
-import { toggleTodoThunk } from '../../redux-store/thunks/mark';
-import {
-    Content,
-    Item,
-    Actions,
-    MarkedSpan
-} from './style.js'
-import { getTodos } from '../../redux-store/selectors';
+import { deleteItemThunk } from '../../redux-store/thunks/deleteItem.js';
+import { toggleTodoThunk } from '../../redux-store/thunks/mark.js';
+import * as Styled from './styled/index.js'
+import { getTodos } from '../../redux-store/selectors/index.js';
 
 const ListsComponent = ({ setUndoneCount }) => {
 
@@ -34,32 +29,32 @@ const ListsComponent = ({ setUndoneCount }) => {
         dispatch(deleteItemThunk({ id: todo.id, callback: () => setLoadingItem(false) }))
     }, [dispatch]);
 
-    return <Content style={{ width: '100%' }}>
+    return <Styled.Content style={{ width: '100%' }}>
         {
 
             (todos.length ? todos.map(todo => {
-                return loadingItem ? <Skeleton.Input active size={'large'} block />  :( <Item key={todo.id + '_i'}>
+                return loadingItem ? <Skeleton.Input active size={'large'} block />  :( <Styled.Item key={todo.id + '_i'}>
 
                     <Checkbox checked={todo.done} onChange={() => handleCheckboxChange(todo)}>
-                        <MarkedSpan marked={todo.done}>
+                        <Styled.MarkedSpan marked={todo.done}>
                             {todo.description}
-                        </MarkedSpan>
+                        </Styled.MarkedSpan>
                     </Checkbox>
-                    <Actions>
+                    <Styled.Actions>
                         <Link to={"/todo/" + todo.id}>
                             See more
                         </Link>
 
                         <Button type="primary" danger onClick={() => handleDelete(todo)}>Delete</Button>
-                    </Actions>
+                    </Styled.Actions>
 
-                </Item>)
+                </Styled.Item>)
 
             })
                 : <p>The To-Do List is currently empty. Please tap 'Create New Todo' to get started.</p>
             )
         }
-    </Content>
+    </Styled.Content>
 
 
 }

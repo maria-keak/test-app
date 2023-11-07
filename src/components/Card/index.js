@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StyledCard } from './style.js';
+import { StyledCard } from './styled/index.js';
 import { Card } from 'antd';
 
 

@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { useCallback, useState } from 'react';
-import { createToDoThunk } from '../../redux-store/thunks/create';
-import { validator } from '../../helpers/formHelper';
+import { createToDoThunk } from '../../redux-store/thunks/create.js';
+import { validator } from '../../helpers/formHelper.js';
 
 const FormComponent = () => {
 

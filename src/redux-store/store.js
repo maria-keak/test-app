@@ -1,10 +1,10 @@
 // src/app/store.js
-import { configureStore } from '@reduxjs/toolkit';
-import todoReducer from './todoSlice.js';
+import { configureStore } from "@reduxjs/toolkit";
+import todoReducer from "./todoSlice.js";
 
 const store = configureStore({
   reducer: {
-    todo: todoReducer
+    todo: todoReducer,
   },
 });
 

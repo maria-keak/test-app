@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Content = styled.div`
   display: flex;
@@ -30,16 +30,16 @@ export const Actions = styled.div`
 `;
 
 export const MarkedSpan = styled.span`
-  text-decoration: ${props => (props.marked ? 'line-through 1px solid' : 'none')};
-  font-style: ${props => (props.marked ? 'italic' : 'normal')};
-  color: ${props => (props.marked ? 'grey' : 'initial')};
+  text-decoration: ${(props) =>
+    props.marked ? "line-through 1px solid" : "none"};
+  font-style: ${(props) => (props.marked ? "italic" : "normal")};
+  color: ${(props) => (props.marked ? "grey" : "initial")};
 
   &::after {
     content: "(marked as done)";
     color: rgba(0, 128, 0, 0.461);
     font-size: 13px;
     margin: 0 5px;
-    display: ${props => (props.marked ? 'inline-block' : 'none')};
+    display: ${(props) => (props.marked ? "inline-block" : "none")};
   }
 `;
-

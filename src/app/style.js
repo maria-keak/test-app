@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const MainContainer = styled.div`
   display: flex;
@@ -6,4 +6,4 @@ const MainContainer = styled.div`
   align-items: center;
   min-height: 100vh;
 `;
-export {MainContainer}
+export { MainContainer };

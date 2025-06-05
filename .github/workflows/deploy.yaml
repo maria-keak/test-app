@@ -1,29 +1,28 @@
-#dfgh
-name: Deploy to GitHub Pages
+#dfghj
+name: Deploy GitHub Pages
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '16'  # CRA works well with Node 16
-
-      - name: Set OpenSSL legacy provider (CRA fix for Node 17+)
-        run: echo "NODE_OPTIONS=--openssl-legacy-provider" >> $GITHUB_ENV
+          node-version: '18'  # or '16' — avoid 17
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build site
+      - name: Build project
         run: npm run build
 
       - name: Deploy to GitHub Pages

@@ -1,14 +1,15 @@
-#dfghj
-name: Deploy GitHub Pages
+#fghjk
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # or your deployment branch
 
 jobs:
-  build_and_deploy:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -16,16 +17,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-
-      - name: Set NODE_OPTIONS env var
-        run: echo "NODE_OPTIONS=--openssl-legacy-provider" >> $GITHUB_ENV
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
       - name: Build project
-        run: npm run build
+        run: CI=false npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

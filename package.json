@@ -3,6 +3,7 @@
   "name": "task",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://maria-keak.github.io/test-app",
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@reduxjs/toolkit": "^1.9.7",

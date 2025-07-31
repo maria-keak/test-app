@@ -19,6 +19,8 @@
     "uuid": "^9.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start && npm run prettier:check && npm run prettier:write scripts",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "prettier": "3.0.3"
   }
 }

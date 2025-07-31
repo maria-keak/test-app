@@ -19,6 +19,23 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 <script id="keak-script" src="https://keakdev.blob.core.windows.net/scripts/c11f18dd-5a47-4923-98bb-c25ae8f3ff08-16.js" type="text/javascript" data-cookie="16"></script>
+    <style>.async-hide { opacity: 0 !important; background: white !important;} </style>
+                            <script>
+                              (function(KEAK, K, E, A, K_, H, I, D, E_) {
+                                K.className += ' ' + E;
+                                H.start = 1 * new Date;
+                                H.end = I = function() {
+                                  K.className = K.className.replace(RegExp(' ?' + E), '');
+                                };
+                                (KEAK[A] = KEAK[A] || []).hide = H;
+                                setTimeout(function() {
+                                  I();
+                                  H.end = null;
+                                }, K_);
+                                H.timeout = K_;
+                              })(window, document.documentElement, 'async-hide', 'dataLayer', 800,
+                                { 'CONTAINER_ID': true });
+                            </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
